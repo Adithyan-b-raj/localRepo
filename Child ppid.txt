@@ -1,0 +1,18 @@
+#include<stdio.h>
+#include<sys/wait.h>
+#include<sys/types.h>
+#include<unistd.h>
+void main()
+{
+        pid_t pid;
+        pid = fork();
+        if(pid==0)
+        {
+                printf("Pid of child: %d\nPid of parent of child:%d\n",getpid(),getppid());
+        }
+        if(pid>0)
+        {
+                wait(NULL);
+                printf("Pid of parent:%d\nPid of parent of parent:%d\n",getpid(),getppid());
+        }
+}
